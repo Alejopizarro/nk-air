@@ -159,7 +159,7 @@ export default function HomePage() {
                 color: "var(--accent)",
               }}
             >
-              Viladecans · Baix Llobregat
+              Barcelona · Viladecans · Baix Llobregat
             </span>
           </div>
 
@@ -179,9 +179,9 @@ export default function HomePage() {
             Servicios de
             <br />
             <span style={{ color: "var(--accent)" }}>
-              aerotermia y climatización
+              climatización, aerotermia
             </span>
-            <br /> para hogares y empresas
+            <br /> y fontaneria
           </h1>
 
           {/* Description */}
@@ -289,42 +289,6 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-
-          {/* Scroll indicator */}
-          <div
-            className="hero-scroll-indicator"
-            style={{
-              position: "absolute",
-              bottom: 40,
-              right: 64,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 6,
-              animation: "scrollIndicator 2s ease-in-out infinite",
-            }}
-          >
-            <div
-              style={{
-                width: 1,
-                height: 40,
-                background:
-                  "linear-gradient(to bottom, var(--accent), transparent)",
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "var(--font-dm-mono)",
-                fontSize: 9,
-                letterSpacing: "0.15em",
-                color: "var(--muted)",
-                textTransform: "uppercase",
-                writingMode: "vertical-rl",
-              }}
-            >
-              Scroll
-            </span>
-          </div>
         </div>
 
         {/* Right column — image */}
@@ -359,6 +323,15 @@ export default function HomePage() {
               inset: 0,
               background:
                 "linear-gradient(to top, var(--bg) 0%, transparent 40%)",
+            }}
+          />
+          {/* top gradient — connects with navbar */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(to bottom, var(--bg) 0%, transparent 22%)",
             }}
           />
           {/* Brand labels */}

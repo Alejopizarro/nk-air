@@ -2,17 +2,17 @@
 
 /* ── Design Tokens ── */
 :root {
-  --bg: #0A0A0A;
-  --surface: #111111;
-  --surface2: #161616;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.12);
-  --text: #F0EFE9;
-  --muted: #6B6B6B;
-  --muted2: #9A9A9A;
+  --bg: #f9f9f9;
+  --surface: #ffffff;
+  --surface2: #f2f2f2;
+  --border: rgba(0,0,0,0.08);
+  --border2: rgba(0,0,0,0.13);
+  --text: #1a1a1a;
+  --muted: #a0a0a0;
+  --muted2: #5e5e5e;
   --accent: #00C8FF;
-  --accent-dim: #003D4D;
-  --accent-glow: rgba(0,200,255,0.15);
+  --accent-dim: rgba(0,200,255,0.10);
+  --accent-glow: rgba(0,200,255,0.18);
 }
 
 /* ── Tailwind theme extensions ── */
@@ -109,7 +109,7 @@ p {
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 .btn-outline:hover {
-  border-color: rgba(255,255,255,0.25);
+  border-color: rgba(0,0,0,0.28);
 }
 .btn-outline:active {
   transform: scale(0.97);

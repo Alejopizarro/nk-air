@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/config";
+import Image from "next/image";
 
 export default function Footer() {
   const colHead: React.CSSProperties = {
@@ -23,8 +24,13 @@ export default function Footer() {
   };
 
   return (
-    <footer style={{ background: "var(--surface)", borderTop: "1px solid var(--border)" }}>
-      <div className="container-main" style={{ paddingTop: 64, paddingBottom: 0 }}>
+    <footer
+      style={{ background: "#e8e8e8", borderTop: "1px solid var(--border)" }}
+    >
+      <div
+        className="container-main"
+        style={{ paddingTop: 64, paddingBottom: 0 }}
+      >
         {/* 4-col grid */}
         <div
           style={{
@@ -36,17 +42,37 @@ export default function Footer() {
         >
           {/* Brand col */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--accent)", flexShrink: 0 }} />
-              <span style={{ fontFamily: "var(--font-syne)", fontWeight: 800, fontSize: 20, letterSpacing: "-0.04em", color: "var(--text)" }}>NK</span>
-              <span style={{ fontFamily: "var(--font-syne)", fontWeight: 800, fontSize: 20, letterSpacing: "-0.04em", color: "var(--accent)" }}>Air</span>
-            </div>
-            <p style={{ fontFamily: "var(--font-dm-sans)", fontSize: 13, color: "var(--muted)", lineHeight: 1.7, maxWidth: 260, marginBottom: 20 }}>
-              Especialistas en climatización, aerotermia y fontanería en Viladecans y el Baix Llobregat.
+            <Image
+              src="/nkair-logo.png"
+              alt="NK Air logo"
+              width={120}
+              height={40}
+            />
+            <p
+              style={{
+                fontFamily: "var(--font-dm-sans)",
+                fontSize: 13,
+                color: "var(--muted)",
+                lineHeight: 1.7,
+                maxWidth: 260,
+                marginBottom: 20,
+              }}
+            >
+              Especialistas en climatización, aerotermia y fontanería en
+              Viladecans y el Baix Llobregat.
             </p>
-            <div style={{ fontFamily: "var(--font-dm-mono)", fontSize: 12, color: "var(--muted)", lineHeight: 1.8 }}>
+            <div
+              style={{
+                fontFamily: "var(--font-dm-mono)",
+                fontSize: 12,
+                color: "var(--muted)",
+                lineHeight: 1.8,
+              }}
+            >
               <p>{SITE_CONFIG.address.street}</p>
-              <p>{SITE_CONFIG.address.city} ({SITE_CONFIG.address.province})</p>
+              <p>
+                {SITE_CONFIG.address.city} ({SITE_CONFIG.address.province})
+              </p>
               <p style={{ marginTop: 8 }}>{SITE_CONFIG.schedule.days}</p>
               <p>{SITE_CONFIG.schedule.hours}</p>
             </div>
@@ -59,14 +85,21 @@ export default function Footer() {
               { name: "Aire Acondicionado", href: "/servicios/climatizacion" },
               { name: "Aerotermia", href: "/servicios/aerotermia" },
               { name: "Fontanería", href: "/servicios/fontaneria" },
-              { name: "Cámaras Frigoríficas", href: "/servicios/camaras-frigorificas" },
+              {
+                name: "Cámaras Frigoríficas",
+                href: "/servicios/camaras-frigorificas",
+              },
             ].map((s) => (
               <Link
                 key={s.href}
                 href={s.href}
                 style={colLink}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = "var(--text)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = "var(--muted2)")
+                }
               >
                 {s.name}
               </Link>
@@ -90,8 +123,12 @@ export default function Footer() {
                   key={z.name}
                   href={z.href}
                   style={colLink}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--text)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--muted2)")
+                  }
                 >
                   {z.name}
                 </Link>
@@ -99,7 +136,7 @@ export default function Footer() {
                 <span key={z.name} style={{ ...colLink, cursor: "default" }}>
                   {z.name}
                 </span>
-              )
+              ),
             )}
           </div>
 
@@ -108,17 +145,33 @@ export default function Footer() {
             <p style={colHead}>Contacto</p>
             <a
               href={`tel:${SITE_CONFIG.phone}`}
-              style={{ ...colLink, fontFamily: "var(--font-dm-mono)", fontSize: 13 }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+              style={{
+                ...colLink,
+                fontFamily: "var(--font-dm-mono)",
+                fontSize: 13,
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--accent)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--muted2)")
+              }
             >
               {SITE_CONFIG.phoneDisplay}
             </a>
             <a
               href={`mailto:${SITE_CONFIG.email}`}
-              style={{ ...colLink, fontFamily: "var(--font-dm-mono)", fontSize: 13 }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+              style={{
+                ...colLink,
+                fontFamily: "var(--font-dm-mono)",
+                fontSize: 13,
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--accent)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--muted2)")
+              }
             >
               {SITE_CONFIG.email}
             </a>
@@ -137,7 +190,7 @@ export default function Footer() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = "var(--text)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)";
+                e.currentTarget.style.borderColor = "rgba(0,0,0,0.25)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = "var(--muted2)";
@@ -163,8 +216,14 @@ export default function Footer() {
             gap: 12,
           }}
         >
-          <p style={{ fontFamily: "var(--font-dm-mono)", fontSize: 11, color: "var(--muted)" }}>
-            © 2025 NK Air. Todos los derechos reservados.
+          <p
+            style={{
+              fontFamily: "var(--font-dm-mono)",
+              fontSize: 11,
+              color: "var(--muted)",
+            }}
+          >
+            © 2026 NK Air. Todos los derechos reservados.
           </p>
           <div style={{ display: "flex", gap: 24 }}>
             {[
@@ -175,9 +234,18 @@ export default function Footer() {
               <Link
                 key={l.href}
                 href={l.href}
-                style={{ fontFamily: "var(--font-dm-mono)", fontSize: 11, color: "var(--muted)", transition: "color 0.15s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--muted2)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                style={{
+                  fontFamily: "var(--font-dm-mono)",
+                  fontSize: 11,
+                  color: "var(--muted)",
+                  transition: "color 0.15s",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = "var(--muted2)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = "var(--muted)")
+                }
               >
                 {l.label}
               </Link>

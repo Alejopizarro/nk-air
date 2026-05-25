@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { SITE_CONFIG, getWhatsAppUrl } from "@/lib/config";
+import { getWhatsAppUrl } from "@/lib/config";
+import Image from "next/image";
 
 const services = [
   { name: "Aire Acondicionado", href: "/servicios/climatizacion" },
@@ -37,10 +38,14 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 50,
-        transition: "background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease",
-        background: scrolled ? "rgba(10,10,10,0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+        transition: "background 0.3s ease, border-color 0.3s ease",
+        background: scrolled
+          ? "rgba(249,249,249,0.96)"
+          : "rgba(249,249,249,0.82)",
+        backdropFilter: "blur(20px)",
+        borderBottom: scrolled
+          ? "1px solid var(--border)"
+          : "1px solid transparent",
       }}
     >
       <nav
@@ -49,38 +54,12 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-          <span
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              background: "var(--accent)",
-              flexShrink: 0,
-              animation: "dotPulse 2s ease-in-out infinite",
-            }}
+          <Image
+            src="/nkair-logo.png"
+            alt="NK Air Logo"
+            width={100}
+            height={40}
           />
-          <span
-            style={{
-              fontFamily: "var(--font-syne)",
-              fontWeight: 800,
-              fontSize: 22,
-              letterSpacing: "-0.04em",
-              color: "var(--text)",
-            }}
-          >
-            NK
-          </span>
-          <span
-            style={{
-              fontFamily: "var(--font-syne)",
-              fontWeight: 800,
-              fontSize: 22,
-              letterSpacing: "-0.04em",
-              color: "var(--accent)",
-            }}
-          >
-            Air
-          </span>
         </Link>
 
         {/* Desktop Nav */}
@@ -92,13 +71,31 @@ export default function Navbar() {
           >
             <button
               className="flex items-center gap-1 text-sm transition-colors"
-              style={{ color: "var(--muted2)", fontFamily: "var(--font-dm-sans)", fontWeight: 400 }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+              style={{
+                color: "var(--muted2)",
+                fontFamily: "var(--font-dm-sans)",
+                fontWeight: 400,
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--text)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--muted2)")
+              }
             >
               Servicios
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
             {servicesOpen && (
@@ -128,8 +125,12 @@ export default function Navbar() {
                       fontFamily: "var(--font-dm-sans)",
                       transition: "color 0.15s",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "var(--text)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "var(--muted2)")
+                    }
                   >
                     {s.name}
                   </Link>
@@ -145,13 +146,31 @@ export default function Navbar() {
           >
             <button
               className="flex items-center gap-1 text-sm transition-colors"
-              style={{ color: "var(--muted2)", fontFamily: "var(--font-dm-sans)", fontWeight: 400 }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+              style={{
+                color: "var(--muted2)",
+                fontFamily: "var(--font-dm-sans)",
+                fontWeight: 400,
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--text)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--muted2)")
+              }
             >
               Zonas
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
             {zonesOpen && (
@@ -181,8 +200,12 @@ export default function Navbar() {
                       fontFamily: "var(--font-dm-sans)",
                       transition: "color 0.15s",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "var(--text)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "var(--muted2)")
+                    }
                   >
                     {z.name}
                   </Link>
@@ -195,9 +218,19 @@ export default function Navbar() {
             <Link
               key={label}
               href={`/${label === "Sobre Nosotros" ? "sobre-nosotros" : "contacto"}`}
-              style={{ fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)", fontWeight: 400, transition: "color 0.15s" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+              style={{
+                fontSize: 14,
+                color: "var(--muted2)",
+                fontFamily: "var(--font-dm-sans)",
+                fontWeight: 400,
+                transition: "color 0.15s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--text)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--muted2)")
+              }
             >
               {label}
             </Link>
@@ -218,8 +251,13 @@ export default function Navbar() {
               transition: "transform 0.15s, box-shadow 0.15s",
               whiteSpace: "nowrap",
             }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 18px rgba(0,200,255,0.35)"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.boxShadow =
+                "0 0 18px rgba(0,200,255,0.35)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "none";
+            }}
           >
             Pedir presupuesto
           </a>
@@ -232,11 +270,26 @@ export default function Navbar() {
           style={{ color: "var(--muted2)" }}
           aria-label="Abrir menú"
         >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
             {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
@@ -251,32 +304,99 @@ export default function Navbar() {
           }}
           className="lg:hidden"
         >
-          <div className="px-5 py-5 space-y-1" style={{ maxWidth: 1320, margin: "0 auto" }}>
-            <p style={{ fontFamily: "var(--font-dm-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.15em", textTransform: "uppercase", paddingBottom: 8 }}>
+          <div
+            className="px-5 py-5 space-y-1"
+            style={{ maxWidth: 1320, margin: "0 auto" }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-dm-mono)",
+                fontSize: 10,
+                color: "var(--muted)",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                paddingBottom: 8,
+              }}
+            >
               Servicios
             </p>
             {services.map((s) => (
-              <Link key={s.href} href={s.href} onClick={() => setMenuOpen(false)}
-                style={{ display: "block", padding: "9px 0", fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)" }}>
+              <Link
+                key={s.href}
+                href={s.href}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: "block",
+                  padding: "9px 0",
+                  fontSize: 14,
+                  color: "var(--muted2)",
+                  fontFamily: "var(--font-dm-sans)",
+                }}
+              >
                 {s.name}
               </Link>
             ))}
-            <p style={{ fontFamily: "var(--font-dm-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.15em", textTransform: "uppercase", paddingTop: 12, paddingBottom: 8 }}>
+            <p
+              style={{
+                fontFamily: "var(--font-dm-mono)",
+                fontSize: 10,
+                color: "var(--muted)",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                paddingTop: 12,
+                paddingBottom: 8,
+              }}
+            >
               Zonas
             </p>
             {zones.map((z) => (
-              <Link key={z.href} href={z.href} onClick={() => setMenuOpen(false)}
-                style={{ display: "block", padding: "9px 0", fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)" }}>
+              <Link
+                key={z.href}
+                href={z.href}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: "block",
+                  padding: "9px 0",
+                  fontSize: 14,
+                  color: "var(--muted2)",
+                  fontFamily: "var(--font-dm-sans)",
+                }}
+              >
                 {z.name}
               </Link>
             ))}
-            <div style={{ borderTop: "1px solid var(--border)", paddingTop: 12, marginTop: 12 }} className="space-y-1">
-              <Link href="/sobre-nosotros" onClick={() => setMenuOpen(false)}
-                style={{ display: "block", padding: "9px 0", fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)" }}>
+            <div
+              style={{
+                borderTop: "1px solid var(--border)",
+                paddingTop: 12,
+                marginTop: 12,
+              }}
+              className="space-y-1"
+            >
+              <Link
+                href="/sobre-nosotros"
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: "block",
+                  padding: "9px 0",
+                  fontSize: 14,
+                  color: "var(--muted2)",
+                  fontFamily: "var(--font-dm-sans)",
+                }}
+              >
                 Sobre Nosotros
               </Link>
-              <Link href="/contacto" onClick={() => setMenuOpen(false)}
-                style={{ display: "block", padding: "9px 0", fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)" }}>
+              <Link
+                href="/contacto"
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: "block",
+                  padding: "9px 0",
+                  fontSize: 14,
+                  color: "var(--muted2)",
+                  fontFamily: "var(--font-dm-sans)",
+                }}
+              >
                 Contacto
               </Link>
             </div>
