@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Space_Grotesk, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,7 +8,26 @@ import CookieBanner from "@/components/CookieBanner";
 import { localBusinessSchema } from "@/lib/schema";
 import { SITE_CONFIG } from "@/lib/config";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const syne = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-dm-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -41,7 +60,7 @@ export default function RootLayout({
   const schema = localBusinessSchema();
 
   return (
-    <html lang="es" className={geist.variable}>
+    <html lang="es" className={`${syne.variable} ${dmSans.variable} ${dmMono.variable}`}>
       <head>
         {/* Google Tag Manager — uncomment and replace GTM-XXXXXXX to activate */}
         {/* <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');` }} /> */}

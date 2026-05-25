@@ -51,7 +51,7 @@ export default function ClimatizacionPage() {
   const schemaData = serviceSchema(
     "Instalación y Reparación de Aire Acondicionado",
     "Servicio profesional de instalación, reparación y mantenimiento de aire acondicionado en Viladecans y el Baix Llobregat.",
-    `${SITE_CONFIG.url}/servicios/climatizacion`
+    `${SITE_CONFIG.url}/servicios/climatizacion`,
   );
 
   return (
@@ -74,10 +74,13 @@ export default function ClimatizacionPage() {
           </h1>
           <p className="text-blue-200 text-lg max-w-2xl mx-auto mb-8">
             Servicio técnico profesional de climatización con más de 25 años de
-            experiencia. Instalamos, reparamos y mantenemos todo tipo de equipos.
+            experiencia. Instalamos, reparamos y mantenemos todo tipo de
+            equipos.
           </p>
           <a
-            href={getWhatsAppUrl("Hola, me gustaría pedir presupuesto para instalación de aire acondicionado.")}
+            href={getWhatsAppUrl(
+              "Hola, me gustaría pedir presupuesto para instalación de aire acondicionado.",
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-eco hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl transition-colors"
@@ -97,8 +100,8 @@ export default function ClimatizacionPage() {
             <p className="text-gray-500 text-sm leading-relaxed mb-4">
               En NK Air somos especialistas en la instalación y reparación de
               sistemas de aire acondicionado para viviendas y negocios en
-              Viladecans, Castelldefels, Gavà, L'Hospitalet de Llobregat y toda
-              la zona del Baix Llobregat.
+              Viladecans, Castelldefels, Gavà, L&apos;Hospitalet de Llobregat y
+              toda la zona del Baix Llobregat.
             </p>
             <p className="text-gray-500 text-sm leading-relaxed mb-4">
               Nuestro equipo técnico tiene más de 25 años de experiencia
@@ -133,17 +136,48 @@ export default function ClimatizacionPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: "🔧", title: "Instalación nueva", desc: "Splits, multisplits, conductos y VRV/VRF para todo tipo de inmuebles." },
-              { icon: "🛠️", title: "Reparación de averías", desc: "Diagnóstico rápido y reparación de cualquier avería en 24-48h." },
-              { icon: "🧹", title: "Limpieza y mantenimiento", desc: "Revisión y limpieza para mantener el equipo en óptimas condiciones." },
-              { icon: "🔄", title: "Sustitución de equipos", desc: "Cambio de equipos obsoletos por nuevos de mayor eficiencia energética." },
-              { icon: "📋", title: "Contratos de mantenimiento", desc: "Revisiones periódicas para empresas y comunidades de vecinos." },
-              { icon: "❄️", title: "Recarga de gas", desc: "Recarga y verificación del gas refrigerante según normativa vigente." },
+              {
+                icon: "🔧",
+                title: "Instalación nueva",
+                desc: "Splits, multisplits, conductos y VRV/VRF para todo tipo de inmuebles.",
+              },
+              {
+                icon: "🛠️",
+                title: "Reparación de averías",
+                desc: "Diagnóstico rápido y reparación de cualquier avería en 24-48h.",
+              },
+              {
+                icon: "🧹",
+                title: "Limpieza y mantenimiento",
+                desc: "Revisión y limpieza para mantener el equipo en óptimas condiciones.",
+              },
+              {
+                icon: "🔄",
+                title: "Sustitución de equipos",
+                desc: "Cambio de equipos obsoletos por nuevos de mayor eficiencia energética.",
+              },
+              {
+                icon: "📋",
+                title: "Contratos de mantenimiento",
+                desc: "Revisiones periódicas para empresas y comunidades de vecinos.",
+              },
+              {
+                icon: "❄️",
+                title: "Recarga de gas",
+                desc: "Recarga y verificación del gas refrigerante según normativa vigente.",
+              },
             ].map((s) => (
-              <div key={s.title} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+              <div
+                key={s.title}
+                className="bg-white rounded-xl p-5 shadow-sm border border-gray-100"
+              >
                 <div className="text-2xl mb-2">{s.icon}</div>
-                <h3 className="font-semibold text-navy text-sm mb-1">{s.title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+                <h3 className="font-semibold text-navy text-sm mb-1">
+                  {s.title}
+                </h3>
+                <p className="text-gray-500 text-xs leading-relaxed">
+                  {s.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -158,20 +192,40 @@ export default function ClimatizacionPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
-              { title: "Instaladores certificados", desc: "Técnicos con certificación oficial para manipulación de gases fluorados y registro RITE." },
-              { title: "Todas las marcas", desc: "Trabajamos con Daikin, Mitsubishi, Fujitsu, LG, Samsung, Panasonic y más." },
-              { title: "Garantía en mano de obra", desc: "Todas nuestras instalaciones y reparaciones incluyen garantía por escrito." },
-              { title: "Presupuesto sin compromiso", desc: "Asesoramiento gratuito y presupuesto detallado sin ningún coste." },
+              {
+                title: "Todas las marcas",
+                desc: "Trabajamos con Daikin, Mitsubishi, Fujitsu, LG, Samsung, Panasonic y más.",
+              },
+              {
+                title: "Garantía en mano de obra",
+                desc: "Todas nuestras instalaciones y reparaciones incluyen garantía por escrito.",
+              },
+              {
+                title: "Presupuesto sin compromiso",
+                desc: "Asesoramiento gratuito y presupuesto detallado sin ningún coste.",
+              },
             ].map((item) => (
               <div key={item.title} className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-cyan-brand/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-cyan-brand" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  <svg
+                    className="w-4 h-4 text-cyan-brand"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-navy text-sm mb-1">{item.title}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                  <h3 className="font-semibold text-navy text-sm mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -187,16 +241,34 @@ export default function ClimatizacionPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
             {[
-              { step: "01", title: "Contacto", desc: "Nos describes tu necesidad por WhatsApp o teléfono." },
-              { step: "02", title: "Visita y presupuesto", desc: "Un técnico visita el lugar y te entrega presupuesto gratuito." },
-              { step: "03", title: "Instalación", desc: "Realizamos la instalación en el día acordado con materiales de calidad." },
-              { step: "04", title: "Puesta en marcha", desc: "Probamos el equipo y te explicamos su funcionamiento." },
+              {
+                step: "01",
+                title: "Contacto",
+                desc: "Nos describes tu necesidad por WhatsApp o teléfono.",
+              },
+              {
+                step: "02",
+                title: "Visita y presupuesto",
+                desc: "Un técnico visita el lugar y te entrega presupuesto gratuito.",
+              },
+              {
+                step: "03",
+                title: "Instalación",
+                desc: "Realizamos la instalación en el día acordado con materiales de calidad.",
+              },
+              {
+                step: "04",
+                title: "Puesta en marcha",
+                desc: "Probamos el equipo y te explicamos su funcionamiento.",
+              },
             ].map((p) => (
               <div key={p.step} className="text-center">
                 <div className="w-12 h-12 rounded-full bg-navy text-white font-bold text-lg flex items-center justify-center mx-auto mb-3">
                   {p.step}
                 </div>
-                <h3 className="font-semibold text-navy text-sm mb-1">{p.title}</h3>
+                <h3 className="font-semibold text-navy text-sm mb-1">
+                  {p.title}
+                </h3>
                 <p className="text-gray-500 text-xs">{p.desc}</p>
               </div>
             ))}
@@ -211,7 +283,10 @@ export default function ClimatizacionPage() {
       />
 
       {/* FAQ */}
-      <FAQSection faqs={faqs} title="Preguntas frecuentes sobre climatización" />
+      <FAQSection
+        faqs={faqs}
+        title="Preguntas frecuentes sobre climatización"
+      />
     </>
   );
 }

@@ -24,57 +24,112 @@ export default function Navbar() {
   const [zonesOpen, setZonesOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md" : "bg-transparent"
-      }`}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        transition: "background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease",
+        background: scrolled ? "rgba(10,10,10,0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(20px)" : "none",
+        borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+      }}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
+      <nav
+        style={{ maxWidth: 1320, margin: "0 auto", padding: "0 32px" }}
+        className="flex items-center justify-between h-16 lg:h-[72px]"
+      >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-1 flex-shrink-0">
+        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
           <span
-            className={`text-2xl font-black tracking-tight transition-colors ${
-              scrolled ? "text-navy" : "text-white"
-            }`}
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: "50%",
+              background: "var(--accent)",
+              flexShrink: 0,
+              animation: "dotPulse 2s ease-in-out infinite",
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "var(--font-syne)",
+              fontWeight: 800,
+              fontSize: 22,
+              letterSpacing: "-0.04em",
+              color: "var(--text)",
+            }}
           >
             NK
           </span>
-          <span className="text-2xl font-black tracking-tight text-cyan-brand">
+          <span
+            style={{
+              fontFamily: "var(--font-syne)",
+              fontWeight: 800,
+              fontSize: 22,
+              letterSpacing: "-0.04em",
+              color: "var(--accent)",
+            }}
+          >
             Air
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-6">
-          {/* Servicios Dropdown */}
+        <div className="hidden lg:flex items-center gap-7">
           <div
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
             <button
-              className={`flex items-center gap-1 font-medium text-sm transition-colors hover:text-cyan-brand ${
-                scrolled ? "text-gray-dark" : "text-white"
-              }`}
+              className="flex items-center gap-1 text-sm transition-colors"
+              style={{ color: "var(--muted2)", fontFamily: "var(--font-dm-sans)", fontWeight: 400 }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
             >
               Servicios
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
             {servicesOpen && (
-              <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
+              <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  marginTop: 8,
+                  width: 220,
+                  background: "var(--surface)",
+                  border: "1px solid var(--border2)",
+                  borderRadius: 10,
+                  padding: "6px 0",
+                  zIndex: 50,
+                }}
+              >
                 {services.map((s) => (
                   <Link
                     key={s.href}
                     href={s.href}
-                    className="block px-4 py-2.5 text-sm text-gray-dark hover:bg-gray-light hover:text-cyan-brand transition-colors"
+                    style={{
+                      display: "block",
+                      padding: "10px 16px",
+                      fontSize: 13,
+                      color: "var(--muted2)",
+                      fontFamily: "var(--font-dm-sans)",
+                      transition: "color 0.15s",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
                   >
                     {s.name}
                   </Link>
@@ -83,29 +138,51 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Zonas Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setZonesOpen(true)}
             onMouseLeave={() => setZonesOpen(false)}
           >
             <button
-              className={`flex items-center gap-1 font-medium text-sm transition-colors hover:text-cyan-brand ${
-                scrolled ? "text-gray-dark" : "text-white"
-              }`}
+              className="flex items-center gap-1 text-sm transition-colors"
+              style={{ color: "var(--muted2)", fontFamily: "var(--font-dm-sans)", fontWeight: 400 }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
             >
               Zonas
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
             {zonesOpen && (
-              <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
+              <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  marginTop: 8,
+                  width: 200,
+                  background: "var(--surface)",
+                  border: "1px solid var(--border2)",
+                  borderRadius: 10,
+                  padding: "6px 0",
+                  zIndex: 50,
+                }}
+              >
                 {zones.map((z) => (
                   <Link
                     key={z.href}
                     href={z.href}
-                    className="block px-4 py-2.5 text-sm text-gray-dark hover:bg-gray-light hover:text-cyan-brand transition-colors"
+                    style={{
+                      display: "block",
+                      padding: "10px 16px",
+                      fontSize: 13,
+                      color: "var(--muted2)",
+                      fontFamily: "var(--font-dm-sans)",
+                      transition: "color 0.15s",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
                   >
                     {z.name}
                   </Link>
@@ -114,29 +191,35 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link
-            href="/sobre-nosotros"
-            className={`font-medium text-sm transition-colors hover:text-cyan-brand ${
-              scrolled ? "text-gray-dark" : "text-white"
-            }`}
-          >
-            Sobre Nosotros
-          </Link>
-          <Link
-            href="/contacto"
-            className={`font-medium text-sm transition-colors hover:text-cyan-brand ${
-              scrolled ? "text-gray-dark" : "text-white"
-            }`}
-          >
-            Contacto
-          </Link>
+          {["Sobre Nosotros", "Contacto"].map((label) => (
+            <Link
+              key={label}
+              href={`/${label === "Sobre Nosotros" ? "sobre-nosotros" : "contacto"}`}
+              style={{ fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)", fontWeight: 400, transition: "color 0.15s" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted2)")}
+            >
+              {label}
+            </Link>
+          ))}
 
-          {/* CTA Button */}
           <a
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-green-eco hover:bg-green-600 text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors"
+            style={{
+              background: "var(--accent)",
+              color: "#000",
+              fontFamily: "var(--font-dm-sans)",
+              fontWeight: 500,
+              fontSize: 13,
+              padding: "8px 18px",
+              borderRadius: 7,
+              transition: "transform 0.15s, box-shadow 0.15s",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 18px rgba(0,200,255,0.35)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
           >
             Pedir presupuesto
           </a>
@@ -145,9 +228,8 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`lg:hidden p-2 rounded-md transition-colors ${
-            scrolled ? "text-navy" : "text-white"
-          }`}
+          className="lg:hidden p-2"
+          style={{ color: "var(--muted2)" }}
           aria-label="Abrir menú"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -162,58 +244,60 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
-          <div className="px-4 py-4 space-y-1">
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-2 pt-2">
+        <div
+          style={{
+            background: "var(--surface)",
+            borderTop: "1px solid var(--border)",
+          }}
+          className="lg:hidden"
+        >
+          <div className="px-5 py-5 space-y-1" style={{ maxWidth: 1320, margin: "0 auto" }}>
+            <p style={{ fontFamily: "var(--font-dm-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.15em", textTransform: "uppercase", paddingBottom: 8 }}>
               Servicios
             </p>
             {services.map((s) => (
-              <Link
-                key={s.href}
-                href={s.href}
-                onClick={() => setMenuOpen(false)}
-                className="block px-2 py-2 text-gray-dark hover:text-cyan-brand text-sm"
-              >
+              <Link key={s.href} href={s.href} onClick={() => setMenuOpen(false)}
+                style={{ display: "block", padding: "9px 0", fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)" }}>
                 {s.name}
               </Link>
             ))}
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-2 pt-3">
+            <p style={{ fontFamily: "var(--font-dm-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.15em", textTransform: "uppercase", paddingTop: 12, paddingBottom: 8 }}>
               Zonas
             </p>
             {zones.map((z) => (
-              <Link
-                key={z.href}
-                href={z.href}
-                onClick={() => setMenuOpen(false)}
-                className="block px-2 py-2 text-gray-dark hover:text-cyan-brand text-sm"
-              >
+              <Link key={z.href} href={z.href} onClick={() => setMenuOpen(false)}
+                style={{ display: "block", padding: "9px 0", fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)" }}>
                 {z.name}
               </Link>
             ))}
-            <div className="border-t border-gray-100 pt-3 mt-3 space-y-1">
-              <Link
-                href="/sobre-nosotros"
-                onClick={() => setMenuOpen(false)}
-                className="block px-2 py-2 text-gray-dark hover:text-cyan-brand text-sm font-medium"
-              >
+            <div style={{ borderTop: "1px solid var(--border)", paddingTop: 12, marginTop: 12 }} className="space-y-1">
+              <Link href="/sobre-nosotros" onClick={() => setMenuOpen(false)}
+                style={{ display: "block", padding: "9px 0", fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)" }}>
                 Sobre Nosotros
               </Link>
-              <Link
-                href="/contacto"
-                onClick={() => setMenuOpen(false)}
-                className="block px-2 py-2 text-gray-dark hover:text-cyan-brand text-sm font-medium"
-              >
+              <Link href="/contacto" onClick={() => setMenuOpen(false)}
+                style={{ display: "block", padding: "9px 0", fontSize: 14, color: "var(--muted2)", fontFamily: "var(--font-dm-sans)" }}>
                 Contacto
               </Link>
             </div>
-            <div className="pt-3">
+            <div style={{ paddingTop: 16 }}>
               <a
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center bg-green-eco hover:bg-green-600 text-white font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
+                style={{
+                  display: "block",
+                  textAlign: "center",
+                  background: "var(--accent)",
+                  color: "#000",
+                  fontFamily: "var(--font-dm-sans)",
+                  fontWeight: 500,
+                  fontSize: 14,
+                  padding: "12px",
+                  borderRadius: 8,
+                }}
               >
-                Pedir presupuesto por WhatsApp
+                Pedir presupuesto
               </a>
             </div>
           </div>
