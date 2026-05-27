@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import CookieBanner from "@/components/CookieBanner";
 import { localBusinessSchema } from "@/lib/schema";
 import { SITE_CONFIG } from "@/lib/config";
+import HomeEffects from "@/components/HomeEffects";
 
 const syne = Space_Grotesk({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col antialiased">
         {/* Google Tag Manager (noscript) — uncomment to activate */}
         {/* <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe></noscript> */}
+        <HomeEffects />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

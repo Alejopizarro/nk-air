@@ -307,31 +307,17 @@ export default function HomePage() {
               animation: "heroImgIn 1.2s 0s cubic-bezier(0.16,1,0.3,1) both",
             }}
           />
-          {/* left-to-right gradient */}
+          {/* edge gradients — all four sides in one layer */}
           <div
             style={{
               position: "absolute",
               inset: 0,
-              background:
-                "linear-gradient(to right, var(--bg) 0%, transparent 40%)",
-            }}
-          />
-          {/* bottom gradient */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to top, var(--bg) 0%, transparent 40%)",
-            }}
-          />
-          {/* top gradient — connects with navbar */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to bottom, var(--bg) 0%, transparent 22%)",
+              background: [
+                "linear-gradient(to right,  var(--bg) 0%, transparent 40%)",
+                "linear-gradient(to bottom, var(--bg) 0%, transparent 38%)",
+                "linear-gradient(to top,    var(--bg) 0%, transparent 40%)",
+              ].join(", "),
+              pointerEvents: "none",
             }}
           />
           {/* Brand labels */}

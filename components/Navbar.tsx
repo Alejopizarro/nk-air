@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { getWhatsAppUrl } from "@/lib/config";
 import Image from "next/image";
@@ -23,6 +23,24 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [zonesOpen, setZonesOpen] = useState(false);
+
+  const servicesCloseRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const zonesCloseRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openServices = () => {
+    if (servicesCloseRef.current) clearTimeout(servicesCloseRef.current);
+    setServicesOpen(true);
+  };
+  const closeServices = () => {
+    servicesCloseRef.current = setTimeout(() => setServicesOpen(false), 200);
+  };
+  const openZones = () => {
+    if (zonesCloseRef.current) clearTimeout(zonesCloseRef.current);
+    setZonesOpen(true);
+  };
+  const closeZones = () => {
+    zonesCloseRef.current = setTimeout(() => setZonesOpen(false), 200);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -66,15 +84,16 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-7">
           <div
             className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
+            onMouseEnter={openServices}
+            onMouseLeave={closeServices}
           >
             <button
-              className="flex items-center gap-1 text-sm transition-colors"
+              className="flex items-center gap-1 text-sm"
               style={{
                 color: "var(--muted2)",
                 fontFamily: "var(--font-dm-sans)",
                 fontWeight: 400,
+                transition: "color 0.2s",
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.color = "var(--text)")
@@ -85,7 +104,12 @@ export default function Navbar() {
             >
               Servicios
               <svg
-                className="w-3.5 h-3.5"
+                style={{
+                  width: 14,
+                  height: 14,
+                  transition: "transform 0.2s ease",
+                  transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                }}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -100,17 +124,20 @@ export default function Navbar() {
             </button>
             {servicesOpen && (
               <div
+                onMouseEnter={openServices}
+                onMouseLeave={closeServices}
                 style={{
                   position: "absolute",
                   top: "100%",
                   left: 0,
-                  marginTop: 8,
                   width: 220,
                   background: "var(--surface)",
                   border: "1px solid var(--border2)",
                   borderRadius: 10,
                   padding: "6px 0",
                   zIndex: 50,
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                  animation: "fadeSlideUp 0.18s ease both",
                 }}
               >
                 {services.map((s) => (
@@ -123,14 +150,16 @@ export default function Navbar() {
                       fontSize: 13,
                       color: "var(--muted2)",
                       fontFamily: "var(--font-dm-sans)",
-                      transition: "color 0.15s",
+                      transition: "color 0.15s, background 0.15s",
                     }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "var(--text)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "var(--muted2)")
-                    }
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "var(--text)";
+                      e.currentTarget.style.background = "var(--bg)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "var(--muted2)";
+                      e.currentTarget.style.background = "transparent";
+                    }}
                   >
                     {s.name}
                   </Link>
@@ -141,15 +170,16 @@ export default function Navbar() {
 
           <div
             className="relative"
-            onMouseEnter={() => setZonesOpen(true)}
-            onMouseLeave={() => setZonesOpen(false)}
+            onMouseEnter={openZones}
+            onMouseLeave={closeZones}
           >
             <button
-              className="flex items-center gap-1 text-sm transition-colors"
+              className="flex items-center gap-1 text-sm"
               style={{
                 color: "var(--muted2)",
                 fontFamily: "var(--font-dm-sans)",
                 fontWeight: 400,
+                transition: "color 0.2s",
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.color = "var(--text)")
@@ -160,7 +190,12 @@ export default function Navbar() {
             >
               Zonas
               <svg
-                className="w-3.5 h-3.5"
+                style={{
+                  width: 14,
+                  height: 14,
+                  transition: "transform 0.2s ease",
+                  transform: zonesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                }}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -175,17 +210,20 @@ export default function Navbar() {
             </button>
             {zonesOpen && (
               <div
+                onMouseEnter={openZones}
+                onMouseLeave={closeZones}
                 style={{
                   position: "absolute",
                   top: "100%",
                   left: 0,
-                  marginTop: 8,
                   width: 200,
                   background: "var(--surface)",
                   border: "1px solid var(--border2)",
                   borderRadius: 10,
                   padding: "6px 0",
                   zIndex: 50,
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                  animation: "fadeSlideUp 0.18s ease both",
                 }}
               >
                 {zones.map((z) => (
@@ -198,14 +236,16 @@ export default function Navbar() {
                       fontSize: 13,
                       color: "var(--muted2)",
                       fontFamily: "var(--font-dm-sans)",
-                      transition: "color 0.15s",
+                      transition: "color 0.15s, background 0.15s",
                     }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "var(--text)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "var(--muted2)")
-                    }
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "var(--text)";
+                      e.currentTarget.style.background = "var(--bg)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "var(--muted2)";
+                      e.currentTarget.style.background = "transparent";
+                    }}
                   >
                     {z.name}
                   </Link>

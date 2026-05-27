@@ -203,6 +203,41 @@ p {
   background: var(--accent-dim);
 }
 
+/* ── Detail grid responsive ── */
+@media (max-width: 900px) {
+  .detail-grid {
+    grid-template-columns: 1fr !important;
+    direction: ltr !important;
+    gap: 48px !important;
+  }
+  .detail-grid > div {
+    direction: ltr !important;
+  }
+}
+
+/* ── Service / Zone hero responsive ── */
+@media (max-width: 640px) {
+  .svc-hero,
+  .zone-hero { grid-template-columns: 1fr !important; }
+  .svc-hero-right,
+  .zone-hero-right { height: 52vw !important; position: relative !important; }
+  .svc-hero-left,
+  .zone-hero-left { padding: 100px 20px 48px !important; }
+}
+
+/* ── Service cards grid ── */
+.svc-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .svc-cards { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 560px) {
+  .svc-cards { grid-template-columns: 1fr !important; }
+}
+
 /* ── Detail image hover ── */
 .detail-img:hover {
   transform: scale(1.04);

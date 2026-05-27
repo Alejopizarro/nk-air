@@ -25,7 +25,8 @@ export default function Footer() {
 
   return (
     <footer
-      style={{ background: "#e8e8e8", borderTop: "1px solid var(--border)" }}
+      style={{ borderTop: "1px solid var(--border)" }}
+      className="bg-gray-light"
     >
       <div
         className="container-main"
