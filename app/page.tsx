@@ -320,36 +320,6 @@ export default function HomePage() {
               pointerEvents: "none",
             }}
           />
-          {/* Brand labels */}
-          <div
-            style={{
-              position: "absolute",
-              right: 32,
-              top: "50%",
-              transform: "translateY(-50%)",
-              display: "flex",
-              flexDirection: "column",
-              gap: 10,
-            }}
-          >
-            {["Daikin", "Mitsubishi", "Fujitsu", "LG", "Samsung"].map(
-              (brand, i) => (
-                <span
-                  key={brand}
-                  style={{
-                    fontFamily: "var(--font-dm-mono)",
-                    fontSize: 11,
-                    letterSpacing: "0.14em",
-                    color: "var(--muted)",
-                    textTransform: "uppercase",
-                    animation: `fadeSlideLeft 0.6s ${0.5 + i * 0.1}s ease both`,
-                  }}
-                >
-                  {brand}
-                </span>
-              ),
-            )}
-          </div>
         </div>
       </section>
 
@@ -968,7 +938,7 @@ export default function HomePage() {
         <style>{`
           @media (max-width: 640px) {
             .stats-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
-            .stats-cell { border-right: none !important; border-bottom: 1px solid var(--border); text-align: left !important; padding: 36px 0 !important; }
+            .stats-cell { border-right: none !important; border-bottom: 1px solid var(--border); text-align: center !important; padding: 36px 24px !important; }
             .stats-cell:last-child { border-bottom: none !important; }
           }
         `}</style>
