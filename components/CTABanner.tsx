@@ -19,7 +19,7 @@ export default function CTABanner({
     <section style={{ padding: "80px 0", background: "var(--bg)" }}>
       <div className="container-main">
         <div
-          className="reveal"
+          className="reveal cta-card"
           style={{
             position: "relative",
             background: "var(--surface)",
@@ -123,13 +123,23 @@ export default function CTABanner({
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }
-          .cta-grid > div:first-child ~ div {
-            padding: 0 !important;
+          .cta-card {
+            padding: 48px 32px !important;
           }
         }
-        @media (max-width: 540px) {
-          .cta-grid {
-            padding: 48px 32px !important;
+        @media (max-width: 480px) {
+          .cta-card {
+            padding: 40px 24px !important;
+            border-radius: 16px !important;
+          }
+          .cta-grid a[href*="wa.me"] {
+            width: 100% !important;
+            justify-content: center !important;
+            white-space: normal !important;
+            text-align: center !important;
+          }
+          .cta-grid > div:last-child {
+            width: 100% !important;
           }
         }
       `}</style>

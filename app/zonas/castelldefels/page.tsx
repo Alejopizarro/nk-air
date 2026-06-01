@@ -86,12 +86,8 @@ export default function CastelldefelsPage() {
 
         <div className="zone-hero-right" style={{ position: "relative", overflow: "hidden" }}>
           <Image src="/hero-nk.jpg" alt="Técnico NK Air en Castelldefels" fill className="object-cover" priority style={{ filter: "grayscale(20%)", animation: "heroImgIn 1.2s 0s cubic-bezier(0.16,1,0.3,1) both" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--bg) 0%, transparent 40%), linear-gradient(to bottom, var(--bg) 0%, transparent 30%), linear-gradient(to top, var(--bg) 0%, transparent 35%)", pointerEvents: "none" }} />
-          <div style={{ position: "absolute", right: 32, top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: 10 }}>
-            {["Climatización", "Aerotermia", "Fontanería", "Frío comercial"].map((s, i) => (
-              <span key={s} style={{ fontFamily: "var(--font-dm-mono)", fontSize: 11, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", animation: `fadeSlideLeft 0.6s ${0.5 + i * 0.1}s ease both` }}>{s}</span>
-            ))}
-          </div>
+          <div className="hero-overlay-desktop" />
+          <div className="hero-overlay-mobile" />
         </div>
       </section>
 
@@ -104,14 +100,14 @@ export default function CastelldefelsPage() {
               Lo que ofrecemos<br />en Castelldefels.
             </h2>
           </div>
-          <div className="svc-cards reveal reveal-delay-2">
+          <div className="zone-svc-cards">
             {[
               { icon: svgAC, title: "Aire Acondicionado", href: "/servicios/climatizacion", desc: "Instalación y reparación de aires acondicionados en apartamentos, chalets y negocios de Castelldefels. Todas las marcas." },
               { icon: svgAero, title: "Aerotermia", href: "/servicios/aerotermia", desc: "Bombas de calor para viviendas unifamiliares y chalets en Castelldefels. Gestión de subvenciones incluida." },
               { icon: svgPlumb, title: "Fontanería", href: "/servicios/fontaneria", desc: "Fontaneros para reformas y reparaciones urgentes en Castelldefels. Respuesta en 24-48h garantizada." },
               { icon: svgCold, title: "Cámaras Frigoríficas", href: "/servicios/camaras-frigorificas", desc: "Instalación de frío comercial para bares, restaurantes y negocios de Castelldefels." },
-            ].map((s) => (
-              <Link key={s.href} href={s.href} className="bento-card" style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: 32, transition: "border-color 0.2s, transform 0.2s", textDecoration: "none" }}>
+            ].map((s, i) => (
+              <Link key={s.href} href={s.href} className={`bento-card reveal reveal-delay-${i + 1}`} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: 32, transition: "border-color 0.2s, transform 0.2s", textDecoration: "none" }}>
                 <div className="bento-icon" style={{ width: 48, height: 48, border: "1px solid var(--border2)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent)", marginBottom: 16, transition: "background 0.2s" }}>
                   <Icon d={s.icon} />
                 </div>

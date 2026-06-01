@@ -924,7 +924,7 @@ export default function HomePage() {
             className="stats-grid"
           >
             {[
-              { value: "+25", suffix: "", label: "Años de experiencia" },
+              { value: "25", suffix: "+", label: "Años de experiencia" },
               { value: "24", suffix: "h", label: "Respuesta garantizada" },
               { value: "9", suffix: "+", label: "Municipios atendidos" },
             ].map((stat, i) => (

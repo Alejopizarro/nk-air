@@ -119,12 +119,8 @@ export default function CamarasFrigorificasPage() {
 
         <div className="svc-hero-right" style={{ position: "relative", overflow: "hidden" }}>
           <Image src="/nkair-camara.webp" alt="Cámara frigorífica comercial instalada en Barcelona" fill className="object-cover" priority style={{ filter: "grayscale(20%)", animation: "heroImgIn 1.2s 0s cubic-bezier(0.16,1,0.3,1) both" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--bg) 0%, transparent 40%), linear-gradient(to bottom, var(--bg) 0%, transparent 30%), linear-gradient(to top, var(--bg) 0%, transparent 35%)", pointerEvents: "none" }} />
-          <div style={{ position: "absolute", right: 32, top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: 10 }}>
-            {["Rivacold", "Bitzer", "Panasonic", "Embraco", "Frascold"].map((brand, i) => (
-              <span key={brand} style={{ fontFamily: "var(--font-dm-mono)", fontSize: 11, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", animation: `fadeSlideLeft 0.6s ${0.5 + i * 0.1}s ease both` }}>{brand}</span>
-            ))}
-          </div>
+          <div className="hero-overlay-desktop" />
+          <div className="hero-overlay-mobile" />
         </div>
       </section>
 

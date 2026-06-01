@@ -67,8 +67,8 @@ export default function Navbar() {
       }}
     >
       <nav
-        style={{ maxWidth: 1320, margin: "0 auto", padding: "0 32px" }}
-        className="flex items-center justify-between h-16 lg:h-[72px]"
+        style={{ maxWidth: 1320, margin: "0 auto" }}
+        className="flex items-center px-4 py-2 justify-between h-16 lg:h-[72px]"
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0">

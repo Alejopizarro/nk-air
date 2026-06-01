@@ -215,17 +215,48 @@ p {
   }
 }
 
+/* ── Hero image overlay — desktop: left + top + bottom (no right) ── */
+.hero-overlay-desktop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to right,  var(--bg) 0%, transparent 40%),
+    linear-gradient(to bottom, var(--bg) 0%, transparent 38%),
+    linear-gradient(to top,    var(--bg) 0%, transparent 40%);
+}
+
+/* ── Hero image overlay — mobile: left + right + top (no bottom) ── */
+.hero-overlay-mobile {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to right,  var(--bg) 0%, transparent 35%),
+    linear-gradient(to left,   var(--bg) 0%, transparent 35%),
+    linear-gradient(to bottom, var(--bg) 0%, transparent 55%);
+}
+
+@media (max-width: 640px) {
+  .hero-overlay-desktop { display: none !important; }
+  .hero-overlay-mobile  { display: block !important; }
+}
+
 /* ── Service / Zone hero responsive ── */
 @media (max-width: 640px) {
+  .hero-section,
   .svc-hero,
   .zone-hero { grid-template-columns: 1fr !important; }
+  .hero-right,
   .svc-hero-right,
-  .zone-hero-right { height: 52vw !important; position: relative !important; }
+  .zone-hero-right { height: 50vh !important; position: relative !important; }
+  .hero-left,
   .svc-hero-left,
   .zone-hero-left { padding: 100px 20px 48px !important; }
 }
 
-/* ── Service cards grid ── */
+/* ── Service cards grid (6-item sections: 3×2) ── */
 .svc-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -236,6 +267,16 @@ p {
 }
 @media (max-width: 560px) {
   .svc-cards { grid-template-columns: 1fr !important; }
+}
+
+/* ── Zone service cards grid (4-item sections: 2×2) ── */
+.zone-svc-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 560px) {
+  .zone-svc-cards { grid-template-columns: 1fr !important; }
 }
 
 /* ── Detail image hover ── */
